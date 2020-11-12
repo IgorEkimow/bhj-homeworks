@@ -3,7 +3,12 @@ const welcome = document.getElementById('welcome');
 const signinButton = document.getElementById('signin__btn');
 const userId = document.getElementById('user_id');
 
-signIn.classList.add('signin_active');
+if(localStorage.userId) {
+    userId.innerText = localStorage.userId;
+    welcome.classList.add('welcome_active');
+} else {
+    signIn.classList.add('signin_active');
+}
 
 signinButton.addEventListener('click', (event) => {
     event.preventDefault();
@@ -18,7 +23,7 @@ signinButton.addEventListener('click', (event) => {
                 localStorage.userId = response.user_id;
                 signIn.classList.remove('signin_active');
                 welcome.classList.add('welcome_active');
-                userId.innerText = response.user_id;
+                userId.innerText = localStorage.userId;
             } else {
                 alert('Неверный логин/пароль');
             }

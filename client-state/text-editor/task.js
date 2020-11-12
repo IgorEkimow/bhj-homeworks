@@ -1,6 +1,6 @@
 const editor = document.getElementById("editor");
 
-editor.value = localStorage.textEditor === undefined ? "" : localStorage.textEditor;
+editor.value = localStorage.getItem('textEditor');
 editor.addEventListener("keyup", (event) => {
     localStorage.textEditor = editor.value;
 });
